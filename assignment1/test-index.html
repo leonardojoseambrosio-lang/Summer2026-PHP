@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="This week we will be looking at API Integration & OOP">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Assigment 1 | PHP - Action-RPG-Free-to-Play</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header class="game-header">
+            <p>Free Action <br> RPG Game</p>
+                <nav class="nav-game">
+                    <a id="Home" title="Home" href="#Home">Home</a>
+                    <a id="Home" title="Team" href="#Team">Team</a>
+                    <a id="Home" title="Support" href="#Support">Support</a>
+                    <a id="Home" title="Other" href="#Other">Other</a>
+                <nav>
+        </header>
+        <main class="game-main">
+            
+            <section class='game-list-title'>
+                <h1>Action-RPG List</h1>
+                <p>Page 1</p>
+            </section>
+            
+            <section class="game-list-section">
+   
+
+                <div class="game-div">
+                        <img class='game-img' src='<?php echo $gameImage; ?>' alt='<?php echo $title; ?> Image'>
+                        <div class="game-div-info">
+                            <h2>Title</h2>
+                            <p>Developer</p>
+                            <p>Publiser</p>
+                            <p>Release</p>
+                        </div>
+                 </div>
+ 
+
+            </section>       
+            
+
+            <!-- Semantic Pagination Container -->
+            <section class="game-pagination">
+                <div class="game-div-pagination">
+                    <button class="btn-pagination"><a href='?page={$previousPage}' class ="back">&larr; Back</a></button>
+                    <button class="btn-pagination"><a href='?page={$nextPage}' class="next">Next &rarr;</a></button>
+                </div>
+            </section>
+
+        </main>
+        <footer class="game-footer">
+            <p>26S Intro to Web Prog using PHP - 01</p>
+            <p>(COMP1006-26S-30624)</p>
+            <p>Assignment One - API</p>
+            <p>&copy; 2026</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,230 @@
+/* Import fonts from Google Fonts */
+/* Arima Madurai */
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@400;700&display=swap');
+/*Indie Flower */
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&family=Indie+Flower&display=swap');
+
+:root{
+    --font-Arima-Madurai: 'Arima Madurai', serif;
+	--font-Finger-Paint: 'Finger Paint', sans-serif;
+
+	--font-size-base: clamp(0.87rem, 2vw, 1rem);
+
+    --header-bg-color:linear-gradient(to right, #D90429, #867979);
+    --header-text-color: #EDF2F4;
+    
+    --bg-color: linear-gradient(to right, #8D99AE, #EDF2F4);
+    --main-text-color: #101116;
+
+    --footer-bg-color: #3e3e3f;
+    --footer-text-color: #EDF2F4;
+
+    --button-color: radial-gradient(circle at top right, #f6758a, #D90429);
+}
+
+/* basic elements */
+/* Clears browser defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+	font-family: var(--font-Arima-Madurai);
+	font-size:var(--font-size-base);
+}
+
+body{
+	background: var(--bg-color);
+}
+
+/* HEADER */
+.game-header{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background: var(--header-bg-color);
+    color: var(--header-text-color);
+    padding: 1rem;
+}
+
+
+.game-icon{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    left: clamp(1rem,3vw, 3rem);
+    align-items: center;
+    font-family: var(--font-Finger-Paint);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.2em; 
+    gap: 6px;
+
+}
+
+.icon{
+    width: 2.5rem;
+    height: auto;
+}
+
+.nav-game a{
+    padding: clamp(1rem,3vw,2rem);
+    text-decoration: none;
+    color: var(--header-text-color);
+    font-weight: bold;
+}
+
+.nav-game a:hover{
+    text-decoration: underline;
+}
+
+.nav-game a:active{
+    color: #b8b8b8;
+}
+
+/* MAIN */
+
+.game-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    width: max-content;
+}
+
+.game-list-title{
+    width: max-content;
+    text-align: center;
+    margin: 1rem;
+}
+
+.game-list-title h1{
+    font-size: 1.5rem;
+}
+
+/* Game List - API */
+.game-list-section{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    width: max-content;
+    height: max-content;
+}
+
+.game-div{
+    box-shadow: #232323c3 0 0 1rem;
+    position: relative;
+}
+
+.game-div-info{
+    color: var(--main-text-color);
+    position: absolute;
+    bottom: 0;
+    left: 2px;
+    width: 300px;
+    padding: 3px;
+    padding-left: 1rem;
+    line-height: 1rem;
+    background: linear-gradient(to right,#ff1e44f2, #d6d6d6ee);
+}
+
+
+.game-div h2{
+    font-size: 1.2rem;
+}
+
+/* Previous, Back and Next Buttons */
+.game-pagination{
+    justify-items: center;
+    margin: 1rem;
+}
+
+.game-div-pagination button{
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    margin: 1em;
+    border-radius: 50%;
+    text-decoration: none;
+    color: var(--header-text-color);
+    box-shadow: #2d3238 1px 5px 12px;
+    background: var(--button-color);
+    border: #88192b clamp(0.2rem, 3vw, 0.4rem) solid;
+    font-family: var(--font-Finger-Paint);
+    transition: all 0.08s ease;
+}
+
+.game-div-pagination button:active{
+    border: #88192b clamp(0.4rem, 3vw, 0.6rem) solid;
+}
+
+.btn-pagination a{
+    text-decoration: none;
+    color: var(--header-text-color);
+}
+
+/* a - Back */
+a.back{
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+a.back:hover{
+    transform: translateX(-6.5px);
+}
+
+a.back:active{
+    transform: translateX(0);
+}
+
+
+/* a - Next */
+a.next{
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+a.next:hover{
+    transform: translateX(6.5px);
+}
+
+a.next:active{
+    transform: translateX(0);
+}
+
+
+
+/* FOOTER */
+.game-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    background:var(--footer-bg-color);
+    color: var(--footer-text-color);
+}
+
+/* Responsive MEDIA */
+
+@media (max-width: 1240px){
+
+    .game-list-section{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+    
+}
+
+@media (max-width: 800px){
+    .game-icon{
+        position: static;
+    }
+
+    .game-list-section{
+    grid-template-columns: 1fr;
+}
+
+}
