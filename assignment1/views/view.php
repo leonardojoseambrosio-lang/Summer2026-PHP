@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="This week we will be looking at API Integration & OOP">
+        <meta name="description" content="Assigment One - API">
         <meta name="robots" content="noindex, nofollow">
         <title>Assigment 1 | PHP - Action-RPG-Free-to-Play</title>
         <link rel="stylesheet" href="./css/style.css">
