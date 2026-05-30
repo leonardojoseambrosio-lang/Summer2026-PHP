@@ -88,6 +88,5 @@
             <p>Assignment One - API</p>
             <p><?php echo date("Y/F/d - h:i:s"); ?></p>
         </footer>
-        </footer>
     </body>
 </html>
