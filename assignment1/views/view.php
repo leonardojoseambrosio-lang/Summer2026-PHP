@@ -16,9 +16,9 @@
             </div>
             <nav class="nav-game">
                 <a id="Home" title="Home" href="#Home">Home</a>
-                <a id="Home" title="Home" href="#Home">Team</a>
-                <a id="Home" title="Home" href="#Home">Support</a>
-                <a id="Home" title="Home" href="#Home">Other</a>
+                <a id="Home" title="Team" href="#Team">Team</a>
+                <a id="Home" title="Support" href="#Support">Support</a>
+                <a id="Home" title="Other" href="#Other">Other</a>
             <nav>
         </header>
 
