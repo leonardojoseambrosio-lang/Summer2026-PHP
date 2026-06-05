@@ -1,10 +1,10 @@
 <?php
 // db_config.php
 class BookDatabase {
-    private $host = "172.31.22.43";
-    private $db   = "Leonardo200657215";
-    private $user = "Leonardo200657215";
-    private $pass = "NvgfI2bdUg"; 
+    private $host;
+    private $db;
+    private $user;
+    private $pass;
     private $pdoInstance = null;
 
     public function __construct($host, $db, $user, $pass){
@@ -28,13 +28,14 @@ class BookDatabase {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             // LAB TASK #1: Review the fetch mode configuration below. 
             // Does it match how index.php expects to read the data?
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+             PDO::ATTR_EMULATE_PREPARES => false,
         ];
 
         try {
             // LAB TASK #2: There is a critical syntax error on the line below 
             // preventing the PDO instance from initializing. Fix it.
-            $this->pdoInstance =new PDO($dsn, $this->user, $this->pass, $options);
+            $this->pdoInstance = new PDO($dsn, $this->user, $this->pass, $options);
             return $this->pdoInstance;
         } catch (PDOException $e) {
             die("Connection failed: " . $e->getMessage());

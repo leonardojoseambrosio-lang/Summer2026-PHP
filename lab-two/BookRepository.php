@@ -22,7 +22,7 @@ class BookRepository {
             $stmt->bindValue(':genreName', $genreName, PDO::PARAM_STR);
 
             $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $stmt->fetchAll();
         } catch (PDOException $e) {
             return [];
         }
