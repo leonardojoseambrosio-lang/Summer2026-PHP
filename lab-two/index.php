@@ -3,7 +3,7 @@
 require_once 'db_config.php';
 require_once 'BookRepository.php';
 
-$dbEngine = new BookDatabase();
+$dbEngine = new BookDatabase("172.31.22.43", "Leonardo200657215", "Leonardo200657215", "NvgfI2bdUg");
 $conn = $dbEngine->getConnection();
 $repo = new BookRepository($conn);
 
@@ -38,7 +38,7 @@ $books = $repo->getBooksByGenre($selectedGenre);
                         <td><?php echo htmlspecialchars($book->author); ?></td>
                         <td><?php echo htmlspecialchars($book->published_year); ?></td>
                     </tr>
-                <?php end<?php foreach; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     <?php endif; ?>
