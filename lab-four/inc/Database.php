@@ -1,9 +1,9 @@
 <?php
     class Database{
-        private string $host = '172.31.22.43';
-        private string $db_name = 'Leonardo200657215';
-        private string $username = 'Leonardo200657215';
-        private string $password = 'NvgfI2bdUg';
+        private string $host = '';
+        private string $db_name = '';
+        private string $username = '';
+        private string $password = '';
 
         // the ?PDO menas it can either hold a real PDO connection object or be null
         private ?PDO $conn = null;
