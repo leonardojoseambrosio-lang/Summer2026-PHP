@@ -1,5 +1,6 @@
-<main class="order-form">
-    <form class="order-form" action="index.php" method="POST">
+<main class="main-form">
+    <h1 class="title">The Taste of Italy in Every Slice</h1>
+    <form class="order-form" action="index.php" method="POST" id="Order">
         
         <div class="input-container">
             <label>Name:</label>
@@ -51,11 +52,11 @@
         if ($checkMessage === true) {
             $lastName = $_POST['username'];
             echo '<div class="order-received">
-                    <span>' . htmlspecialchars($lastName) . ', your order has been received!</span>
+                    <span>' . htmlspecialchars($lastName) . ', your order has been received!</span> <span style="color: green; font-weight: bold;">✔</span>
                   </div>';
         } else {
             echo '<div class="order-error">
-                    <span>Error to process the order... try again!</span>
+                    <span>Error to process the order... try again!</span> <span style="color: red; font-weight: bold;">❌</span>
                   </div>';
         }
     }

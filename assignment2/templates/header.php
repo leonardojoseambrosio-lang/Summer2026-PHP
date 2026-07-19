@@ -10,7 +10,7 @@
     </head>
     <body>
         <header>
-            <nav class="nav-wrapper">
+            <nav class="nav-wrapper" id="Home">
                 <div class="logo">
                     <img title="Pizza Icon" alt="Pizza Icon" class="icon" src="./assets/pizzalogo.jpg">
                     <span>Pizza Top</span>
@@ -18,6 +18,7 @@
                 <div class="nav-links">
                     <a id="home-link" title="Home" href="#Home">Home</a>
                     <a id="order-link" title="Order" href="#Order">Order</a>
+                    <a id="order-link" title="Order" href="#Contact">Contact</a>
                 </div>
             </nav>
         </header>

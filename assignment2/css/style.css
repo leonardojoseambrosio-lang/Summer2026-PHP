@@ -1,6 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Cinzel&family=Yellowtail&display=swap');
+
+:root{
+    --font-Lato: 'Lato', sans-serif;
+    --font-PlayfairDisplay: 'Playfair Display', serif;
+    --font-Cinzel: 'Cinzel', serif;
+}
+
 body{
     margin: 0;
     background: #f8f8f8;
+    font-family: var(--font-Lato);
+}
+
+label{
+    font-family: var(--font-PlayfairDisplay);
+    font-weight: 800;
 }
 
 /* HEADER */
@@ -21,7 +35,12 @@ body{
     align-items: center;
     gap: 1rem;
     font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 800;
+    font-family: var(--font-Cinzel);
+    font-weight: 900;   
+}
+
+.logo span{
+    text-shadow: 1px 3px 10px rgba(0, 0, 0, 0.73);
 }
 
 .logo img{
@@ -52,21 +71,32 @@ body{
     transform: translateY(2px);
 }
 
-/* FORM */
+/* FORM */  
+.title{
+    margin: 1rem 1rem 1rem 4rem;
+    font-family: var(--font-Cinzel);
+    font-weight: 900;
+    font-size: 3rem;
+}
+
 .order-form{
     display: grid;
     grid-template-columns: 1fr;
     margin: 2rem auto;
+    padding: 1rem;
     gap: clamp(1rem, 20vw, 1.6rem);
     justify-items: center;
     align-items: center;
     max-width: 600px;
     background:linear-gradient(to bottom, rgb(164, 247, 164), rgb(255, 146, 146));
+    box-shadow: 0 10px 30px rgb(0, 0, 0);
     font-size: 1.2rem;
 }
 
 .input-container input{
     background: rgb(255, 255, 197);
+    width: 360px;
+    height: 20px;
 }
 
 .checkbox-container{
@@ -121,6 +151,9 @@ body{
     margin-bottom: 1rem;
     padding: 0.8rem;
     font-size: 1.2rem;
+    width: 40%;
+    justify-self: center;
+    text-align: center;
 }
 
 .order-error{
@@ -130,4 +163,22 @@ body{
     margin-bottom: 1rem;
     padding: 0.8rem;
     font-size: 1.2rem;
+    width: 40%;
+    justify-self: center;
+    text-align: center;
+}
+
+/* FOOTER */
+
+.footer-info{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    background: linear-gradient(to left, #d11313, #ffffff, #008000);
+}
+
+.footer-info p{
+    margin: 0.6rem;
 }
