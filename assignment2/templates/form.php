@@ -22,23 +22,27 @@
                 </div>
         </div>
 
-        <label>Crust:</label>
-            <select name="crust">
-                <option value="Tradicional">Tradicional</option>
-                <option value="Cheddar">Cheddar</option>
-                <option value="Cream Cheese">Cream Cheese</option>
-            </select>
-        </label>
+        <div class="select-container">   
+            <label>Crust:</label>
+                <select name="crust">
+                    <option value="Tradicional">Tradicional</option>
+                    <option value="Cheddar">Cheddar</option>
+                    <option value="Cream Cheese">Cream Cheese</option>
+                </select>
+            </label>
+        </div>    
 
-        <label>Sauce:</label>
-            <select name="sauce">
-                <option value="Tomato Sauce">Tomato Sauce</option>
-                <option value="Pesto">Pesto</option>
-                <option value="White Sauce">White Sauce</option>
-            </select>
-        </label>
+        <div class="select-container">  
+            <label>Sauce:</label>
+                <select name="sauce">
+                    <option value="Tomato Sauce">Tomato Sauce</option>
+                    <option value="Pesto">Pesto</option>
+                    <option value="White Sauce">White Sauce</option>
+                </select>
+            </label>
+        </div>
 
-        <button type="submit">Send Order</button>
+        <button class="submit-btn" type="submit">Send Order</button>
 
     </form>
 

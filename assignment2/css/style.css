@@ -81,7 +81,53 @@ body{
 }
 
 .checkbox-container input{
+    background: rgb(255, 255, 197);
+    accent-color: rgb(38, 82, 0);
     margin-right: 0.3rem;
     width: 30px;
     font-size: 0.8rem;
+}
+
+
+.submit-btn{
+    padding: 4px;
+    font-size: 0.8em;
+    background: rgb(255, 255, 197);
+   transition: all 0.3s ease-in-out;
+}
+
+.submit-btn:hover{
+    background: rgb(247, 247, 0);
+    color: #6b6b6b;
+    border: 2px, solid #6b6b6b;
+}
+
+.select-container select{
+    background: rgb(255, 255, 197);
+    font-size: 0.8em;
+    margin-left: 0.6rem;
+}
+
+.submit-btn:active{
+    background: rgb(100, 215, 0);
+    color: #000;
+    transform: translateY(1px);
+}
+
+.order-received{
+    background: rgb(255, 255, 197);
+    border: 2px solid rgb(38, 82, 0);
+    color: rgb(51, 108, 0);
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.order-error{
+        background: rgb(255, 255, 197);
+    border: 2px solid rgb(82, 0, 0);
+    color: rgb(108, 0, 0);
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    font-size: 1.2rem;
 }
