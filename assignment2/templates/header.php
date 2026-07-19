@@ -6,6 +6,7 @@
         <meta name="description" content="Assigment Two - Pizza Order">
         <meta name="robots" content="noindex, nofollow">
         <title>Assigment 2 | Pizza Order</title>
+        <link rel="icon" type="image/jpeg" href="./assets/pizzalogo.jpg">
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
@@ -18,7 +19,7 @@
                 <div class="nav-links">
                     <a id="home-link" title="Home" href="#Home">Home</a>
                     <a id="order-link" title="Order" href="#Order">Order</a>
-                    <a id="order-link" title="Order" href="#Contact">Contact</a>
+                    <a id="order-link" title="Contact" href="#Contact">Contact</a>
                 </div>
             </nav>
         </header>
