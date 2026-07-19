@@ -8,16 +8,12 @@ class PizzaProcessor{
 
     public function processOrder(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $name = $_POST['name'] ??;
+            $name = $_POST['username'] ?? '';
             $toppings = implode(", ", $_POST['toppings'] ?? []);
             $crust = $_POST['crust'] ?? '';
             $sauce = $_POST['sauce'] ?? '';
 
-            if($this->order->receiveOrder($name, $toppings, $crust, $sauce)){
-                return "Your order has been received!";
-            }else{
-                return "Error: your order hasn't been processed..."
-            }
+            return $this->order->receiveOrder($name, $toppings, $crust, $sauce);
         }
         return null;
     }

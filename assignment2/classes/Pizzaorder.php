@@ -1,5 +1,6 @@
 <?php
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 class PizzaOrder{
     private $database;
 
@@ -8,12 +9,12 @@ class PizzaOrder{
     }
 
     public function receiveOrder($name, $toppings, $crust, $sauce){
-        $sql = "INSERT INTO pizza_orders (name, toppings, crust, sauce) VALUES (:name, :toppings, :crust, :sauce)";
+        $sql = "INSERT INTO pizza_orders (username, toppings, crust, sauce) VALUES (:username, :toppings, :crust, :sauce)";
 
         $stmt = $this->database->prepare($sql);
 
         return $stmt->execute([
-            ':name' => $name,
+            ':username' => $name,
             ':toppings' => $toppings,
             ':crust' => $crust,
             ':sauce' => $sauce
