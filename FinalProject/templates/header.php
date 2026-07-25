@@ -17,10 +17,10 @@
             Virtua816
         </div>
         <div class="nav-menu">
-        <a href="./index.html" title="Home">Home</a>
-        <a href="./aboutUs.html" title="About Us">About Us</a>
-        <a href="./shopPage.html" title="Game Store">Game Store</a>
-        <a href="./contactUS.html" title="Contact Us">Contact Us</a>
+        <a href="index.php?page=home" title="Home">Home</a>
+        <a href="index.php?page=aboutUs" title="About Us">About Us</a>
+        <a href="index.php?page=shopPage" title="Game Store">Game Store</a>
+        <a href="index.php?page=contactUs" title="Contact Us">Contact Us</a>
         </div>
         <button class="nav-alerts">&#128490; Alerts</button>
         <div class="nav-profile"><img class="profileicon" alt="Profile Icon" src="./assets/geralt-profileicon.png">
