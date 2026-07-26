@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS product_final_project (
     short_description VARCHAR(255) NOT NULL,
     full_description TEXT NOT NULL,
     product_price FLOAT NOT NULL,
-    product_image VARCHAR(255) NOT NULL
-    quantity_in_stock INT NOT NULL,
+    product_image VARCHAR(255) NOT NULL,
+    quantity_in_stock INT NOT NULL
 );
 
 INSERT INTO product_final_project VALUES (NULL, 'Galaxy Adventures', 

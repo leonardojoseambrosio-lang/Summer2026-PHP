@@ -25,7 +25,7 @@
         public function getSingleProduct($product_id){
              try{
                 $conn = $this->db->connect();
-                $stmt = $conn->prepare("SELECT product_id, product_name, short_description, full_description, product_price, product_image, qunatity_in_stock FROM product_final_project WHERE product_id = :product_id");
+                $stmt = $conn->prepare("SELECT product_id, product_name, short_description, full_description, product_price, product_image, quantity_in_stock FROM product_final_project WHERE product_id = :product_id");
                 $stmt->execute([':product_id' => $product_id]);
                 $result = $stmt->fetch(PDO::FETCH_OBJ);
 

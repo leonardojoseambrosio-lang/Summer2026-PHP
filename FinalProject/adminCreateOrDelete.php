@@ -30,7 +30,7 @@
                 <label for="quantity_in_stock">Quantity in stock: </label>
                 <input type="text" id="quantity_in_stock" name="quantity_in_stock" required>
 
-                <button type="submit" class="fieldset-btn">Submit</button>
+                <button type="submit" class="fieldset-btn" value="create_new_product">Submit</button>
             </fieldset>
         </form>
     </main>
