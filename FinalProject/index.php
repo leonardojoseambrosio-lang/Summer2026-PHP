@@ -8,17 +8,36 @@
     //Instantiate productObject to connect to the database
     $productObject = new Products($database);
     
-    //shopPage.php variables 
+    //Get all products in the list (shopPage.php, adminCreateOrDelete.php)
     $products = $productObject->getAllProducts();
 
-    //productPage.php variables
+    //Get a single product using id as reference (productPage.php, adminEditProduct.php)
     $productId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
     $product = $productObject->getSingleProduct($productId);
     
     //Calling function to create a new product (adminCreateOrDelete.php)
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if(isset($_POST['action']) && $_POST['action'] === 'create_new_product'){
+        if(isset($_POST['create_new']) && $_POST['create_new'] === 'create_new_product'){
         $productObject->createProduct($_POST);
+        header("Location: index.php?page=adminCreateOrDelete");
+        exit;
+        }    
+    }
+
+    //Calling function to delete product (adminCreateOrDelete.php)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['delete_product'])){
+        $productId = $_POST['delete_product'];
+        $productObject->deleteProduct($productId);
+        header("Location: index.php?page=adminCreateOrDelete");
+        exit;
+        }    
+    }
+
+    //Calling function to edit product (adminEditProduct.php)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['edit_product'])){
+        $productObject->editProduct($_POST);
         header("Location: index.php?page=adminCreateOrDelete");
         exit;
         }    

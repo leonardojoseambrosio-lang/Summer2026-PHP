@@ -6,9 +6,10 @@
 
         <?php
         foreach ($products as $product){
+            $id = htmlspecialchars($product->product_id);
             $name = htmlspecialchars($product->product_name);
             $shortDescription = htmlspecialchars($product->short_description);
-            $price = htmlspecialchars($product->product_price);
+            $price = number_format(htmlspecialchars($product->product_price), 2, '.', '');
             $image = htmlspecialchars($product->product_image);
             ?>
         
@@ -16,12 +17,12 @@
             <div class="product-card-image">
                 <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>">
             </div>
-            <span class="product-card-badge"><a href="index.php?page=productPage&id=<?php echo $product->product_id; ?>" title="<?php echo $name; ?>">Read More</a></span>
+            <span class="product-card-badge"><a href="index.php?page=productPage&id=<?php echo $id; ?>" title="<?php echo $name; ?>">Read More</a></span>
             <h2 class="product-card-title"><?php echo $name; ?></h2>
             <p class="product-card-body">
                 <?php echo $shortDescription; ?>
             </p>
-             <p class="product-card-price"><?php echo "U$ " . number_format($product->product_price, 2, '.', ''); ?></p>
+             <p class="product-card-price"><?php echo "U$ " . $price; ?></p>
             <button class="product-card-btn" type="button">Buy</button>
         </article>
             <?php } ?>

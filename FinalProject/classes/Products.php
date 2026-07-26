@@ -62,5 +62,53 @@
             }
 
         }
+
+        //Function to delete a product
+        public function deleteProduct($id){
+            try{
+            $conn = $this->db->connect();
+            $stmt = $conn->prepare("DELETE FROM product_final_project WHERE product_id = :id");
+
+            return $stmt->execute([':id' => $id]);
+            }
+            catch(PDOException $error){
+                throw new Exception("Delete product error: " . $error->getMessage());
+            }
+
+        }
+
+         // Function to edit product
+        public function editProduct($data){
+            try {
+                $conn = $this->db->connect();
+                
+                $stmt = $conn->prepare("
+                    UPDATE product_final_project 
+                    SET product_name = :product_name,
+                        short_description = :short_description,
+                        full_description = :full_description,
+                        product_price = :product_price,
+                        product_image = :product_image,
+                        quantity_in_stock = quantity_in_stock + :add_stock
+
+                        WHERE product_id = :product_id;
+
+                ");
+                
+                return $stmt->execute([
+                    ':product_id'        => $data['product_id'] ?? 0,
+                    ':product_name'      => $data['product_name'] ?? '',
+                    ':short_description' => $data['short_description'] ?? '',
+                    ':full_description'  => $data['full_description'] ?? '',
+                    ':product_price'     => $data['product_price'] ?? 0,
+                    ':product_image'     => $data['product_image'] ?? './assets/',
+                    ':add_stock'         => $data['add_stock'] ?? 0
+                ]);
+            }
+            catch(PDOException $error){
+                throw new Exception("Product edit error: " . $error->getMessage());
+            }
+
+        }
     }
 ?>
