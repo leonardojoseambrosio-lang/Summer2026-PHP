@@ -23,7 +23,7 @@
                 <input type="password" id="user_password" name="user_password" required>
 
 
-                <label for="user_password_confirm">Confirm PAssword: </label>
+                <label for="user_password_confirm">Confirm Password: </label>
                 <input type="password" id="user_password_confirm" name="user_password_confirm" required>
 
 
@@ -33,7 +33,7 @@
                         <option value="admin">Admin</option>
                     </select>
 
-                <button type="submit"  class="fieldset-btn" name="create_new" value="create_new_user">Add User</button>
+                <button type="submit"  class="fieldset-btn" name="create_new_user" value="create_new_user">Add User</button>
             </fieldset>
         </form>
         <table class="product-table">

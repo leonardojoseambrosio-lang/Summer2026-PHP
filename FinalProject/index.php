@@ -66,6 +66,33 @@
     $userId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
     $user = $usersObject->getSingleUser($userId);
 
+    //Calling function to create a new user (createOrDeleteUsers.php)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['create_new_user'])){
+        $usersObject->createUser($_POST);
+        header("Location: index.php?page=createOrDeleteUsers");
+        exit;
+        }    
+    }
+
+    //Calling function to delete user (createOrDeleteUsers.php)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['delete_user'])){
+        $userId = $_POST['delete_user'];
+        $usersObject->deleteUser($userId);
+        header("Location: index.php?page=createOrDeleteUsers");
+        exit;
+        }    
+    }
+
+    //Calling function to edit user (editUser.php)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['edit_user'])){
+        $usersObject->editUser($_POST);
+        header("Location: index.php?page=createOrDeleteUsers");
+        exit;
+        }    
+    }
 
     // ### Templates ###
     require "./templates/header.php";

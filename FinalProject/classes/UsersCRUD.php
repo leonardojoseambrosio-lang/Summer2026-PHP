@@ -37,76 +37,98 @@
 
         }
 
-        // Function to create a new product
-        public function createProduct($data){
+        // Function to create a new user
+        public function createUser($data){
+                //check if password and password confirmation are equals
+                if(($data['user_password']) === ($data['user_password_confirm'])){
+                //password hash
+                $password_hash = password_hash($data['user_password'], PASSWORD_DEFAULT);
+                }else{
+                    throw new Exception("The passwords are not the same.");
+                }
+
             try {
                 $conn = $this->db->connect();
                 
                 $stmt = $conn->prepare("
-                    INSERT INTO product_final_project 
-                    (product_name, short_description, full_description, product_price, product_image, quantity_in_stock) 
-                    VALUES (:product_name, :short_description, :full_description, :product_price, :product_image, :quantity_in_stock)
+                    INSERT INTO users_final_project 
+                    (user_name, user_email, user_password, permission) 
+                    VALUES (:user_name, :user_email, :user_password, :permission)
                 ");
 
                 return $stmt->execute([
-                    ':product_name'      => $data['product_name'] ?? '',
-                    ':short_description' => $data['short_description'] ?? '',
-                    ':full_description'  => $data['full_description'] ?? '',
-                    ':product_price'     => $data['product_price'] ?? 0,
-                    ':product_image'     => $data['product_image'] ?? './assets/',
-                    ':quantity_in_stock' => $data['quantity_in_stock'] ?? 0
+                    ':user_name'      => $data['user_name'] ?? '',
+                    ':user_email' => $data['user_email'] ?? '',
+                    ':user_password'  => $password_hash,
+                    ':permission'     => $data['permission'] ?? '',
                 ]);
             }
             catch(PDOException $error){
-                throw new Exception("Product creation error: " . $error->getMessage());
+                throw new Exception("User creation error: " . $error->getMessage());
             }
 
         }
 
         //Function to delete a product
-        public function deleteProduct($id){
+        public function deleteUser($id){
             try{
             $conn = $this->db->connect();
-            $stmt = $conn->prepare("DELETE FROM product_final_project WHERE product_id = :id");
+            $stmt = $conn->prepare("DELETE FROM users_final_project WHERE user_id = :id");
 
             return $stmt->execute([':id' => $id]);
             }
             catch(PDOException $error){
-                throw new Exception("Delete product error: " . $error->getMessage());
+                throw new Exception("Delete user error: " . $error->getMessage());
             }
 
         }
 
-         // Function to edit product
-        public function editProduct($data){
-            try {
+        // Function to edit user
+        public function editUser($data){
+            
+            // Check if a new password was inputed
+            if(!empty($data['user_password'])){
+
+                    $password_hash = password_hash($data['user_password'], PASSWORD_DEFAULT);
+
+                    $sql = "UPDATE users_final_project 
+                    SET user_name = :user_name,
+                        user_email = :user_email,
+                        user_password = :user_password,
+                        permission = :permission
+                        WHERE user_id = :user_id";
+
+                $parameters =  [':user_id' => $data['user_id'] ?? 0,
+                                ':user_name' => $data['user_name'] ?? '',
+                                ':user_email' => $data['user_email'] ?? '',
+                                ':user_password' => $password_hash,
+                                ':permission' => $data['permission'] ?? ''
+                                ];
+
+                }else{
+                    $sql = "UPDATE users_final_project 
+                    SET user_name = :user_name,
+                        user_email = :user_email,
+                        permission = :permission
+                        WHERE user_id = :user_id";
+
+                $parameters =  [':user_id' => $data['user_id'] ?? 0,
+                                ':user_name' => $data['user_name'] ?? '',
+                                ':user_email' => $data['user_email'] ?? '',
+                                ':permission' => $data['permission'] ?? ''
+                                ];
+                }
+
+
+            try {                
+                
                 $conn = $this->db->connect();
+                $stmt = $conn->prepare($sql);
                 
-                $stmt = $conn->prepare("
-                    UPDATE product_final_project 
-                    SET product_name = :product_name,
-                        short_description = :short_description,
-                        full_description = :full_description,
-                        product_price = :product_price,
-                        product_image = :product_image,
-                        quantity_in_stock = quantity_in_stock + :add_stock
-
-                        WHERE product_id = :product_id;
-
-                ");
-                
-                return $stmt->execute([
-                    ':product_id'        => $data['product_id'] ?? 0,
-                    ':product_name'      => $data['product_name'] ?? '',
-                    ':short_description' => $data['short_description'] ?? '',
-                    ':full_description'  => $data['full_description'] ?? '',
-                    ':product_price'     => $data['product_price'] ?? 0,
-                    ':product_image'     => $data['product_image'] ?? './assets/',
-                    ':add_stock'         => $data['add_stock'] ?? 0
-                ]);
+                return $stmt->execute($parameters);
             }
             catch(PDOException $error){
-                throw new Exception("Product edit error: " . $error->getMessage());
+                throw new Exception("User edit error: " . $error->getMessage());
             }
 
         }

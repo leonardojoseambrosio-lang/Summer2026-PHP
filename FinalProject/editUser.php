@@ -21,7 +21,7 @@
             <fieldset class="contact-fieldset">
                 <h2>Edit User</h2>
                 <!-- Hidden input to add the id to the $_POST-->
-                <input type="hidden" name="product_id" value="<?php echo $userId; ?>">
+                <input type="hidden" name="user_id" value="<?php echo $userId; ?>">
 
                 <label for="user_name">User Name: </label>
                 <input type="text" id="user_name" name="user_name" value="<?php echo $userName ?>" required>
@@ -29,16 +29,16 @@
                 <label for="user_email">Email: </label>
                 <input type="text" id="user_email" name="user_email" value="<?php echo  $userEmail ?>" required>
                 
-                <label for="user_email">Password: </label>
-                <input type="password" id="user_password" name="user_password" required>
+                <label for="user_email">New Password (not required): </label>
+                <input type="password" id="user_password" name="user_password">
                 
                 <label for="permission" class="form-label">Permission: </label>
                     <select name="permission" id="permission" class="contact-form-option" required>
                         <option value="user" <?php echo ($permission === 'user') ? 'selected' : '' ?>>User</option>
-                        <option value="user" <?php echo ($permission === 'admin') ? 'selected' : '' ?>>Admin</option>
+                        <option value="admin" <?php echo ($permission === 'admin') ? 'selected' : '' ?>>Admin</option>
                     </select>
 
-                <button type="submit"  class="fieldset-btn" name="edit_product" value="edit_product">Modify User</button>
+                <button type="submit"  class="fieldset-btn" name="edit_user" value="edit_user">Modify User</button>
             </fieldset>
         </form>
     </main>
