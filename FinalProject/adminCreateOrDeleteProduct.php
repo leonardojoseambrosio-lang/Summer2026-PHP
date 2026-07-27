@@ -1,6 +1,6 @@
         <!-- Create/Delete-->
        <!--Title-->
-    <h1 class="title-general">Create/Delete</h1>
+    <h1 class="title-general">Create/Delete Products</h1>
     <main class="contactUs-wrap">
         <article class="contactUs-text">
             <p>

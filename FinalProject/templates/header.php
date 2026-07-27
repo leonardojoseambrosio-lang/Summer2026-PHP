@@ -22,7 +22,8 @@
         <a href="index.php?page=shopPage" title="Game Store">Game Store</a>
         <a href="index.php?page=contactUs" title="Contact Us">Contact Us</a>
 
-        <a href="index.php?page=adminCreateOrDelete" title="Test">Create or Delete</a>
+        <a href="index.php?page=adminCreateOrDeleteProduct" title="Test">Create or Delete</a>
+        <a href="index.php?page=createOrDeleteUsers" title="Test2">User CRUD</a>
 
         </div>
         <button class="nav-alerts">&#128490; Alerts</button>
