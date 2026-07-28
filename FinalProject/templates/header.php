@@ -24,10 +24,15 @@
 
         <a href="index.php?page=adminCreateOrDeleteProduct" title="Test">Create or Delete</a>
         <a href="index.php?page=createOrDeleteUsers" title="Test2">User CRUD</a>
+        <a href="index.php?page=register" title="Test3">Register</a>
 
         </div>
         <button class="nav-alerts">&#128490; Alerts</button>
         <div class="nav-profile"><img class="profileicon" alt="Profile Icon" src="./assets/geralt-profileicon.png">
-        Leon_WH &#9661;
+        <?php if(isset($_SESSION['user_id'])) : 
+        echo htmlspecialchars($_SESSION['user_name']) . " &#9661;";
+        else : echo "Login User";
+        endif;
+         ?>
         </div>
     </nav>

@@ -165,5 +165,34 @@
             }
 
         }
+        
+        //function to create a login session
+        public function login($loginData){
+            $conn = $this->db->connect();
+
+            $sql =  "SELECT * FROM users_final_project WHERE user_name = :user_name";
+            $stmt = $conn->prepare($sql);
+
+            $parameters = [':user_name' => $loginData['user_name']];
+            $stmt->execute($parameters);
+            $user = $stmt->fetch(PDO::FETCH_OBJ);
+
+                if($user && password_verify($loginData['user_password'], $user->user_password)){
+
+                    $_SESSION['user_id'] = $user->user_id;
+                    $_SESSION['user_name'] = $user->user_name;
+                    $_SESSION['permission'] = $user->permission;
+
+                    return true;
+                }
+
+                throw new Exception("Invalid user or password.");
+        }
+
+        public function logout() {
+
+        session_unset();    
+        session_destroy();
+}
     }
 ?>

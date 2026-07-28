@@ -1,4 +1,7 @@
 <?php
+//SESSION start
+session_start();
+
 // FORÇAR O PHP A FALAR O ERRO NA TELA:
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -67,7 +70,7 @@
         if(isset($_POST['create_new_user'])){
             try{
                 $usersObject->createUser($_POST);
-                $successMessage = "User registered successfully!";
+                $successMessage = "User created successfully!";
             }
             catch (Exception $error){
                 $errorMessage = $error->getMessage();
@@ -103,6 +106,42 @@
     $userId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
     $user = $usersObject->getSingleUser($userId);
     
+
+    // ### LOGIN/REGISTER
+
+    //Calling function to register a new user (the same function to create a new user) (register.php)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['register_user'])){
+            try{
+                $usersObject->createUser($_POST);
+                $successMessage = "User registered successfully!";
+            }
+            catch (Exception $error){
+                $errorMessage = $error->getMessage();
+            }
+        }    
+    }
+
+    //Calling function login to create a SESSION
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['login'])){
+            try{
+                $usersObject->login($_POST);
+
+
+            }
+            catch(Exception $e){
+                $errorMessage = $e->getMEssage();
+            }
+        }
+    }
+
+    //Calling logout function
+    if($_GET['page'] === 'logout'){
+        $usersObject->logout();
+        header("Location: index.php?page=home");
+        exit;
+    }
 
     // ### Templates ###
     require "./templates/header.php";

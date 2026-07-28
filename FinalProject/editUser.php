@@ -24,10 +24,10 @@
                 <input type="hidden" name="user_id" value="<?php echo $userId; ?>">
 
                 <label for="user_name">User Name: </label>
-                <input type="text" id="user_name" name="user_name" value="<?php echo $userName ?>" required>
+                <input type="text" id="user_name" name="user_name" value="<?php echo htmlspecialchars($_POST['user_name'] ?? $userName);?>" required>
 
                 <label for="user_email">Email: </label>
-                <input type="text" id="user_email" name="user_email" value="<?php echo  $userEmail ?>" required>
+                <input type="text" id="user_email" name="user_email" value="<?php echo htmlspecialchars($_POST['user_email'] ?? $userEmail);?>" required>
                 
                 <label for="user_email">New Password (not required): </label>
                 <input type="password" id="user_password" name="user_password">
