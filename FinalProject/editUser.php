@@ -17,7 +17,7 @@
             </p>
         </article>
         <!--Area do Edit User Info-->
-        <form class="contact-form"  action="index.php" method="POST">
+        <form class="contact-form"  action="index.php?page=editUser&id=<?php echo $userId; ?>" method="POST">
             <fieldset class="contact-fieldset">
                 <h2>Edit User</h2>
                 <!-- Hidden input to add the id to the $_POST-->
@@ -31,6 +31,9 @@
                 
                 <label for="user_email">New Password (not required): </label>
                 <input type="password" id="user_password" name="user_password">
+
+                <label for="user_email">Confirm New Password (not required): </label>
+                <input type="password" id="user_password_confirm" name="user_password_confirm">
                 
                 <label for="permission" class="form-label">Permission: </label>
                     <select name="permission" id="permission" class="contact-form-option" required>
@@ -39,6 +42,22 @@
                     </select>
 
                 <button type="submit"  class="fieldset-btn" name="edit_user" value="edit_user">Modify User</button>
+                
+                 <!-- Messages about user edition -->
+                 <?php if (!empty($successMessage)): ?>
+                <div class="success-message">
+                    <p> <?php echo htmlspecialchars($successMessage); ?> </p>
+                </div>
+                <?php 
+                    endif; ?>
+
+                <?php if (!empty($errorMessage)): ?>
+                <div class="error-message">
+                    <p> <?php echo htmlspecialchars($errorMessage); ?> </p>
+                </div>
+                <?php endif; ?>
+                    <!-- Link to return to Create / Delete Users -->
+                     <a href="index.php?page=createOrDeleteUsers"> Return </a>
             </fieldset>
         </form>
     </main>

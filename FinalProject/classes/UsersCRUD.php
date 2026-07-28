@@ -37,19 +37,50 @@
 
         }
 
+        // Function to check if the data is valid (if passwords are equal and the user/email is valid)
+        private function validateData($data){
+            
+            $conn = $this->db->connect();
+            
+            $userId = $data['user_id'] ?? 0; //to edit assign the user_id if it is a creation, the id is 0
+
+            //connect to the database to validade if user_email is valid
+            $stmt = $conn->prepare("SELECT user_email FROM users_final_project WHERE user_email = :user_email AND user_id != :user_id");
+            $stmt->execute([':user_email' => $data['user_email'] , ':user_id' => $userId]);
+            
+            if ($stmt->fetch()) {
+                throw new Exception("This email is already registered: " . $data['user_email']);
+            }
+
+            //connect to the database to validade if user_name is valid
+            $stmt = $conn->prepare("SELECT user_name FROM users_final_project WHERE user_name = :user_name AND user_id != :user_id");
+            $stmt->execute([':user_name' => $data['user_name'] , ':user_id' => $userId]);
+            if ($stmt->fetch()) {
+                throw new Exception("This user name is already registered: " . $data['user_name']);
+            }
+
+
+            //check if password and password confirmation are equals
+            if (!empty($data['user_password'])) {
+                if(($data['user_password']) !== ($data['user_password_confirm'])){
+                    throw new Exception("The passwords are not the same.");
+                    }
+            }
+                return true;
+
+        }
+
         // Function to create a new user
         public function createUser($data){
-                //check if password and password confirmation are equals
-                if(($data['user_password']) === ($data['user_password_confirm'])){
-                //password hash
-                $password_hash = password_hash($data['user_password'], PASSWORD_DEFAULT);
-                }else{
-                    throw new Exception("The passwords are not the same.");
-                }
+            //if the $data is valid, creates the user
+            $this->validateData($data); 
+
+            //password hash
+            $password_hash = password_hash($data['user_password'], PASSWORD_DEFAULT);
 
             try {
                 $conn = $this->db->connect();
-                
+
                 $stmt = $conn->prepare("
                     INSERT INTO users_final_project 
                     (user_name, user_email, user_password, permission) 
@@ -69,7 +100,7 @@
 
         }
 
-        //Function to delete a product
+        //Function to delete a user
         public function deleteUser($id){
             try{
             $conn = $this->db->connect();
@@ -86,6 +117,8 @@
         // Function to edit user
         public function editUser($data){
             
+            $this->validateData($data);
+
             // Check if a new password was inputed
             if(!empty($data['user_password'])){
 

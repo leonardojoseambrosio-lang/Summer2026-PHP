@@ -17,14 +17,7 @@
 
     //Instantiate productObject to connect to the database
     $productObject = new Products($database);
-    
-    //Get all products in the list (shopPage.php, adminCreateOrDeleteProduct.php)
-    $products = $productObject->getAllProducts();
-
-    //Get a single product using id as reference (productPage.php, adminEditProduct.php)
-    $productId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-    $product = $productObject->getSingleProduct($productId);
-    
+        
     //Calling function to create a new product (adminCreateOrDeleteProduct.php)
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['create_new']) && $_POST['create_new'] === 'create_new_product'){
@@ -53,25 +46,32 @@
         }    
     }
 
+    //Get all products in the list (shopPage.php, adminCreateOrDeleteProduct.php)
+    $products = $productObject->getAllProducts();
+
+    //Get a single product using id as reference (productPage.php, adminEditProduct.php)
+    $productId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+    $product = $productObject->getSingleProduct($productId);
+
 
     // ### USERS ###
 
     //Instantiate UsersCRUD to connect to the database
     $usersObject = new UsersCRUD($database);
 
-    //Get all users in the list (createOrDeleteUsers.php)
-    $users = $usersObject->getAllUsers();
-
-   //Get a single user using id as reference (editUser.php)
-    $userId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-    $user = $usersObject->getSingleUser($userId);
-
     //Calling function to create a new user (createOrDeleteUsers.php)
+    $errorMessage = "";
+    $successMessage = "";
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['create_new_user'])){
-        $usersObject->createUser($_POST);
-        header("Location: index.php?page=createOrDeleteUsers");
-        exit;
+            try{
+                $usersObject->createUser($_POST);
+                $successMessage = "User registered successfully!";
+            }
+            catch (Exception $error){
+                $errorMessage = $error->getMessage();
+            }
         }    
     }
 
@@ -80,19 +80,29 @@
         if(isset($_POST['delete_user'])){
         $userId = $_POST['delete_user'];
         $usersObject->deleteUser($userId);
-        header("Location: index.php?page=createOrDeleteUsers");
-        exit;
         }    
     }
 
     //Calling function to edit user (editUser.php)
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['edit_user'])){
-        $usersObject->editUser($_POST);
-        header("Location: index.php?page=createOrDeleteUsers");
-        exit;
+            try{
+                $usersObject->editUser($_POST);
+                $successMessage = "User updated successfully!";
+            }
+            catch (Exception $error){
+                $errorMessage = $error->getMessage();
+            }
         }    
     }
+
+    //Get all users in the list (createOrDeleteUsers.php)
+    $users = $usersObject->getAllUsers();
+
+    //Get a single user using id as reference (editUser.php)
+    $userId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+    $user = $usersObject->getSingleUser($userId);
+    
 
     // ### Templates ###
     require "./templates/header.php";

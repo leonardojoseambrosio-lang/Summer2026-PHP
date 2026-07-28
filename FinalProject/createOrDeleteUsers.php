@@ -10,14 +10,14 @@
         <!--Create or Delete User-->
 
         <!--Create a New User-->
-        <form class="contact-form"  action="index.php" method="POST">
+        <form class="contact-form"  action="index.php?page=createOrDeleteUsers" method="POST">
             <fieldset class="contact-fieldset">
                 <h2>Create a New Users</h2>
                 <label for="user_name">User Name: </label>
-                <input type="text" id="user_name" name="user_name" required>
+                <input type="text" id="user_name" name="user_name" value="<?php echo htmlspecialchars($_POST['user_name'] ?? ''); ?>" required>
                 
                 <label for="user_email">Email: </label>
-                <input type="email" id="user_email" name="user_email" required>
+                <input type="email" id="user_email" name="user_email" value="<?php echo htmlspecialchars($_POST['user_email'] ?? ''); ?>"  required>
 
                 <label for="user_password">Password: </label>
                 <input type="password" id="user_password" name="user_password" required>
@@ -34,11 +34,26 @@
                     </select>
 
                 <button type="submit"  class="fieldset-btn" name="create_new_user" value="create_new_user">Add User</button>
+
+                <!-- Messages about user creation -->
+                 <?php if (!empty($successMessage)): ?>
+                <div class="success-message">
+                    <p> <?php echo htmlspecialchars($successMessage); ?> </p>
+                </div>
+                <?php 
+                    endif; ?>
+
+                <?php if (!empty($errorMessage)): ?>
+                <div class="error-message">
+                    <p> <?php echo htmlspecialchars($errorMessage); ?> </p>
+                </div>
+                <?php endif; ?>
             </fieldset>
         </form>
-        <table class="product-table">
-
+        
         <!--List Users - Delete and Edit option-->
+        <table class="product-table" id="product-table">
+
             <h2>User List</h2>
 
             <thead class="table-head">
@@ -70,7 +85,7 @@
                     <td><?php echo $permission?></td>
                     <td><?php echo $created?></td>
                     <td>
-                        <form action="index.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                        <form action="index.php?page=createOrDeleteUsers" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
                             <button type="submit"  class="" name="delete_user" value="<?php echo $userId?>">Delete</button> 
                             <a href="index.php?page=editUser&id=<?php echo $userId; ?>">Edit</a>
                         </form>
