@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users_final_project (
 INSERT INTO users_final_project VALUES (NULL, 
                                         'admin', 
 										'leo@leo.com',
-                                        '$2y$10$wE9K2sQhV5X5vN8Jb5Z1/u1Qv7Y3x2L4mZ5N6k7p8q9r0s1t2u3v4', -- password: 123@123
+                                        '$2y$10$4PHpwzhTExDnMn6pWvQ6JukWHAuRFGzhdVnXRNNuQa6jjAteRLg3q' , -- password: 123@123
                                         'admin',
                                         NOW() 
                                         );
