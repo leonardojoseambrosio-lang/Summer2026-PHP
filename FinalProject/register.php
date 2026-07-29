@@ -28,7 +28,7 @@
 
 
                 <button type="submit"  class="fieldset-btn" name="register_user" value="register_user">Register</button>
-
+                <a href="index.php?page=login">Login Page</a>
                 <!-- Messages about user creation -->
                  <?php if (!empty($successMessage)): ?>
                 <div class="success-message">

@@ -88,9 +88,11 @@
                     <td><?php echo $stock?></td>
                      <?php if (isset($_SESSION['user_id']) && $_SESSION['permission'] === 'admin'): ?>
                     <td>
-                        <form action="index.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
-                            <button type="submit"  class="" name="delete_product" value="<?php echo $id?>">Delete</button> 
-                            <a href="index.php?page=adminEditProduct&id=<?php echo $id; ?>">Edit</a>
+                        <form class="table-options" action="index.php?page=adminCreateOrDeleteProduct" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                            <button type="submit"  class="" name="delete_product" value="<?php echo $id?>">&#9746; Delete</button> 
+                            <div class="edit-link">
+                                <a href="index.php?page=adminEditProduct&id=<?php echo $id; ?>">&#9965; Edit</a>
+                            </div>    
                         </form>
                     </td>
                     <?php endif; ?>

@@ -91,7 +91,7 @@
                     ':user_name'      => $data['user_name'] ?? '',
                     ':user_email' => $data['user_email'] ?? '',
                     ':user_password'  => $password_hash,
-                    ':permission'     => $data['permission'] ?? '',
+                    ':permission'     => $data['permission'] ?? 'user',
                 ]);
             }
             catch(PDOException $error){

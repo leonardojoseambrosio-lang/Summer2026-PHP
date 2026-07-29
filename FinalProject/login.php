@@ -13,6 +13,7 @@
         <form class="contact-form"  action="index.php?page=login" method="POST">
             <fieldset class="contact-fieldset">
                 <h2>Login</h2>
+                
                 <?php if (isset($_GET['success']) && $_GET['success'] === 'created'): ?>
                 <div class="success-message">
                    <p> User created successfully!</p>
@@ -27,7 +28,7 @@
 
 
                 <button type="submit"  class="fieldset-btn" name="login" value="login">Login</button>
-
+                <a href="index.php?page=register">Register User</a>
                 <!-- Error login messages -->
                 <?php if (!empty($errorMessage)): ?>
                 <div class="error-message">
