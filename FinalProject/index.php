@@ -115,6 +115,9 @@ session_start();
             try{
                 $usersObject->createUser($_POST);
                 $successMessage = "User registered successfully!";
+
+                header("Location: index.php?page=login&success=created");
+                exit;
             }
             catch (Exception $error){
                 $errorMessage = $error->getMessage();
@@ -127,7 +130,7 @@ session_start();
         if(isset($_POST['login'])){
             try{
                 $usersObject->login($_POST);
-
+                header("Location: index.php?page=home");
 
             }
             catch(Exception $e){

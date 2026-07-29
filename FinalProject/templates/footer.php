@@ -1,4 +1,4 @@
-        <footer class="contact-container">
+    <footer class="contact-container">
         <!--Company informations-->
         <div class = "contact-info">
         <h2>Information: </h2>

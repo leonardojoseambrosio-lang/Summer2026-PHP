@@ -1,4 +1,4 @@
-        <!-- Register-->
+    <!-- Register-->
        <!--Title-->
     <h1 class="title-general">Register</h1>
     <main class="contactUs-wrap">
