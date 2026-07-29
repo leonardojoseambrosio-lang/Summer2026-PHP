@@ -1,6 +1,11 @@
         <!-- Create/Delete-->
        <!--Title-->
-    <h1 class="title-general">Create/Delete Users</h1>
+       <?php if (isset($_SESSION['user_id']) && $_SESSION['permission'] === 'admin'): ?>
+        <h1 class="title-general">Create/Delete Users</h1>
+        <?php else : ?>
+        <h1 class="title-general">Users</h1>
+        <?php endif; ?>
+    
     <main class="contactUs-wrap">
         <article class="contactUs-text">
             <p>
@@ -10,6 +15,7 @@
         <!--Create or Delete User-->
 
         <!--Create a New User-->
+        <?php if (isset($_SESSION['user_id']) && $_SESSION['permission'] === 'admin'): ?>
         <form class="contact-form"  action="index.php?page=createOrDeleteUsers" method="POST">
             <fieldset class="contact-fieldset">
                 <h2>Create a New Users</h2>
@@ -50,7 +56,7 @@
                 <?php endif; ?>
             </fieldset>
         </form>
-        
+        <?php endif; ?>
         <!--List Users - Delete and Edit option-->
         <table class="product-table" id="product-table">
 
@@ -63,7 +69,9 @@
                     <th>Email</th>
                     <th>Permission</th>
                     <th>Created at</th>
+                    <?php if (isset($_SESSION['user_id']) && $_SESSION['permission'] === 'admin'): ?>
                     <th>Delete/Edit</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody class="table-body">
@@ -84,12 +92,14 @@
                     <td><?php echo $userEmail?></td>
                     <td><?php echo $permission?></td>
                     <td><?php echo $created?></td>
+                    <?php if (isset($_SESSION['user_id']) && $_SESSION['permission'] === 'admin'): ?>
                     <td>
                         <form action="index.php?page=createOrDeleteUsers" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
                             <button type="submit"  class="" name="delete_user" value="<?php echo $userId?>">Delete</button> 
                             <a href="index.php?page=editUser&id=<?php echo $userId; ?>">Edit</a>
                         </form>
                     </td>
+                    <?php endif; ?>
                 </tr>
                 <?php } //forach end?>
             </tbody>

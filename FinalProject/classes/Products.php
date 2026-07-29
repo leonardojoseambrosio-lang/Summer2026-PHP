@@ -37,8 +37,42 @@
 
         }
 
+         private function validateData($data){
+            
+            $conn = $this->db->connect();
+            
+            $productId = $data['product_id'] ?? 0; //to edit assign the product_id if it is a creation, the id is 0
+            
+            //connect to the database to validade if there is a product with the same name
+            $stmt = $conn->prepare("SELECT product_name FROM product_final_project WHERE product_name = :product_name AND product_id != :product_id");
+            $stmt->execute([':product_name' => $data['product_name'] , ':product_id' => $productId]);
+            
+            if ($stmt->fetch()) {
+                throw new Exception("This product name is already registered: " . $data['product_name']);
+                }
+
+            //check if price and stock are numbers
+            $productPrice = $data['product_price'] ?? 0;
+            if(!is_numeric($productPrice)){
+                throw new Exception("Incorrect value to price (must be a number).");
+            }
+
+            $productStock = $data['quantity_in_stock'] ?? ($data['add_stock'] ?? 0);
+            if(filter_var($productStock, FILTER_VALIDATE_INT) === false){
+                throw new Exception("Incorrect value to stock (must be integer).");
+            }
+
+                return true;
+            }
+                
+
+
         // Function to create a new product
         public function createProduct($data){
+
+            //if the $data is valid, creates the product
+            $this->validateData($data); 
+
             try {
                 $conn = $this->db->connect();
                 
@@ -79,6 +113,10 @@
 
          // Function to edit product
         public function editProduct($data){
+
+            //if the $data is valid, edit the product
+            $this->validateData($data); 
+
             try {
                 $conn = $this->db->connect();
                 

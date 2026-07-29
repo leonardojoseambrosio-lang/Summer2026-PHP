@@ -2,6 +2,10 @@
 //SESSION start
 session_start();
 
+//Seccess or Error Messages
+$errorMessage = "";
+$successMessage = "";
+
 // FORÇAR O PHP A FALAR O ERRO NA TELA:
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -23,10 +27,15 @@ session_start();
         
     //Calling function to create a new product (adminCreateOrDeleteProduct.php)
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if(isset($_POST['create_new']) && $_POST['create_new'] === 'create_new_product'){
-        $productObject->createProduct($_POST);
-        header("Location: index.php?page=adminCreateOrDeleteProduct");
-        exit;
+        if(isset($_POST['create_new_product'])){
+            try{
+                $productObject->createProduct($_POST);
+                $successMessage = "Product created successfully!";
+                unset($_POST);
+            }
+            catch (Exception $error){
+                $errorMessage = $error->getMessage();
+            }
         }    
     }
 
@@ -35,17 +44,19 @@ session_start();
         if(isset($_POST['delete_product'])){
         $productId = $_POST['delete_product'];
         $productObject->deleteProduct($productId);
-        header("Location: index.php?page=adminCreateOrDeleteProduct");
-        exit;
         }    
     }
 
     //Calling function to edit product (adminEditProduct.php)
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['edit_product'])){
-        $productObject->editProduct($_POST);
-        header("Location: index.php?page=adminCreateOrDeleteProduct");
-        exit;
+            try{
+                $productObject->editProduct($_POST);
+                $successMessage = "Product updated successfully!";
+            }
+            catch (Exception $error){
+                $errorMessage = $error->getMessage();
+            }
         }    
     }
 
@@ -63,14 +74,12 @@ session_start();
     $usersObject = new UsersCRUD($database);
 
     //Calling function to create a new user (createOrDeleteUsers.php)
-    $errorMessage = "";
-    $successMessage = "";
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['create_new_user'])){
             try{
                 $usersObject->createUser($_POST);
                 $successMessage = "User created successfully!";
+                unset($_POST);
             }
             catch (Exception $error){
                 $errorMessage = $error->getMessage();
