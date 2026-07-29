@@ -2,6 +2,31 @@
 //SESSION start
 session_start();
 
+// Restric user access restric pages through URL
+$page = $_GET['page'] ?? 'home';
+//Restrict pages
+$restricPages = ['adminCreateOrDeleteProduct', 'createOrDeleteUsers'];
+
+// Checking permission
+if (in_array($page, $restricPages)) {
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: index.php?page=login");
+        exit;
+    }
+}
+
+// Edit pages - only Admin can access
+$restricPagesAdmin = ['adminEditProduct', 'editUser'];
+
+// Checking permission
+if (in_array($page, $restricPagesAdmin)) {
+    if (!isset($_SESSION['user_id']) || $_SESSION['permission'] !== 'admin') {
+        header("Location: index.php?page=home");
+        exit;
+    }
+}
+
+
 //Seccess or Error Messages
 $errorMessage = "";
 $successMessage = "";
