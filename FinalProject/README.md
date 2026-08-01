@@ -1,4 +1,4 @@
-Virtua816 - Project Documentation
+## Virtua816 - Project Documentation
 Project developed as an academic portfolio to showcase full-stack web development skills using PHP (Object-Oriented), MySQL, HTML, and modern CSS. The project simulates an indie game studio website focused on retro 8-bit and 16-bit pixel art games.
 
 ## Structure
