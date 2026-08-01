@@ -15,3 +15,14 @@ Project developed as an academic portfolio to showcase full-stack web developmen
 - Role-based access control (Standard users can browse tables and items; Admins can create, edit, and delete products/users).
 - Centralized request handling through index.php.
 - Clean retro-modern interface styling.
+
+## Test Accounts
+You can use the following accounts to test the application:
+
+- **Admin Account:**
+  - User: admin
+  - Password: 123@123
+
+- **Standard User Account:**
+  - User: user
+  - Password: 123@123
