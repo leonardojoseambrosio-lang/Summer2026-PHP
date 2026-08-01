@@ -31,7 +31,7 @@ if (in_array($page, $restricPagesAdmin)) {
 $errorMessage = "";
 $successMessage = "";
 
-    require_once "./classes/config.php";
+    require_once "./config/config.php";
     require_once "./classes/Database.php";
     require_once "./classes/Products.php";
     require_once "./classes/UsersCRUD.php";
