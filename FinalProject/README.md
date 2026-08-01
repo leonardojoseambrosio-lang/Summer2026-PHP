@@ -1,8 +1,17 @@
 Virtua816 - Project Documentation
-Project Overview
-This repository contains the source code for Virtua816, a fictional indie game studio website dedicated to developing and selling retro 8-bit and 16-bit pixel art games. This project serves as a portfolio/academic showcase demonstrating front-end development skills using HTML and CSS.
+Project developed as an academic portfolio to showcase full-stack web development skills using PHP (Object-Oriented), MySQL, HTML, and modern CSS. The project simulates an indie game studio website focused on retro 8-bit and 16-bit pixel art games.
 
-Technologies Used
-HTML: Semantic markup for structured page layouts (including header, main, footer, and navigation links).
+## Structure
+- **classes/**: Contains the OOP logic (database handling, products, and user management).
+- **templates/**: Reusable layout pieces (header, footer, etc.).
+- **database/**: SQL script to create and setup the database.
+- **assets/ & css/**: Stylesheets and media files.
+- **config.php**: Centralized database connection settings.
+- **index.php**: Main entry point and request router.
+- **.php**: Application views and pages using a mix of PHP and HTML.
 
-CSS: Custom styling implementing a modern visual identity that blends retro charm with contemporary design to show that classic gaming meets today's standards.
+## Features
+- Object-oriented architecture for managing products and user permissions.
+- Role-based access control (Standard users can browse tables and items; Admins can create, edit, and delete products/users).
+- Centralized request handling through index.php.
+- Clean retro-modern interface styling.
