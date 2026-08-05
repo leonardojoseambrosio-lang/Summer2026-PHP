@@ -9,7 +9,7 @@
         </article>
         </article>
         <!--Contact form-->
-        <form class="contact-form">
+        <form class="contact-form" action="index.php?page=contactUs" method="POST">
             <fieldset class="contact-fieldset">
                 <h2>Support Form</h2>
                 <label for="name">Name:</label>
@@ -22,9 +22,22 @@
                 <input type="tel" name="tel" id="tel" title="Format: 444 333 1111" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" required>
 
                 <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" rows="5"></textarea>
+                <textarea id="message" name="message" rows="5" required></textarea>
             
-                <button type="submit" class="fieldset-btn">Submit</button>
+                <button type="submit" class="fieldset-btn" name="contact_us">Submit</button>
+                 <!-- Messages inform that the message has been received -->
+                 <?php if (!empty($successMessage)): ?>
+                <div class="success-message">
+                    <p> <?php echo htmlspecialchars($successMessage); ?> </p>
+                </div>
+                <?php 
+                    endif; ?>
+
+                <?php if (!empty($errorMessage)): ?>
+                <div class="error-message">
+                    <p> <?php echo htmlspecialchars($errorMessage); ?> </p>
+                </div>
+                <?php endif; ?>
             </fieldset>
         </form>
     </main>

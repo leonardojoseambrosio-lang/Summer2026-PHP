@@ -174,6 +174,21 @@ $successMessage = "";
         exit;
     }
 
+        //Contact us - sucess message
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(isset($_POST['contact_us'])){
+            try{
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $successMessage =  $name . ", we received your message! We will get back to you as soon as possible. Please check your email: " . $email;
+                unset($_POST);
+            }
+            catch (Exception $error){
+                $errorMessage = $error->getMessage();
+            }
+        }    
+    }
+
     // ### Templates ###
     require "./templates/header.php";
 
