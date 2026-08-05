@@ -6,8 +6,8 @@
                 <div class="main-text">Experience the magic of 8-bit and 16-bit classics, reimagined for modern hardware. We bridge the gap between the golden age of gaming and today's high-definition standards.</div>
             
                 <div class="game-buttons">
-                    <button class="playnow">&#9634; Our Games</button>
-                    <button class="watchtrailer">&#9634; Read More</button>    
+                    <a href="index.php?page=shopPage" class="ourGames">&#9634; Our Games</a>
+                    <a href="index.php?page=aboutUs" class="readMore">&#9634; Read More</a> 
                 </div>
 
                 <div class="moreinfo">

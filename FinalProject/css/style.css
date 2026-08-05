@@ -329,21 +329,26 @@ main{
    font-size: 4rem;
 }
 
-.playnow, .watchtrailer{
-    padding: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+.ourGames, .readMore{
+    padding: 1.2em 1em;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-font-color);
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
     transition: all 0.2s ease;
 }
 
 /* hover effect*/
-.playnow:hover, .watchtrailer:hover{
+.ourGames:hover, .readMore:hover{
     background-color: var(--hover-effetct-color);
     transform: translateY(-2px);
+    text-decoration: none;
 }
 
 /* active effect */
-.playnow:active, .watchtrailer:active {
+.ourGames:active, .readMore:active {
     transform: translateY(0);
 }
 
@@ -732,6 +737,7 @@ padding: 0.1rem 0.4rem;
 .table-options a:hover {
     background-color: #1a16ff;
     color: var(--primary-font-color);
+    text-decoration: none;
     box-shadow: 0px 0px 3px 3px var(--secondary-color-variation);
 }
 
