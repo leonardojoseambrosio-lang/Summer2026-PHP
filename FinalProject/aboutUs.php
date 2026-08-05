@@ -32,7 +32,7 @@
             <p class="article-paragraph">
             We would love to hear from you! Whether you are a fan of our projects, 
             a potential collaborator, or just want to share your favorite retro memory, 
-            please feel free to reach out to us using the <a href="./contactUS.html">contact form.</a>
+            please feel free to reach out to us using the <a href="index.php?page=contactUs">contact form.</a>
             </p>
     </article>
         </main>
